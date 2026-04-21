@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram без блокировок — Revive VPN</title>
+    <title>Revive VPN — Твой свободный интернет</title>
     
     <link rel="icon" href="vpn_logo.jpg" type="image/jpeg">
  
-    
     <style>
         :root {
-            --bg-block: rgba(26, 30, 40, 0.6); /* Полупрозрачные темные блоки (эффект стекла) */
-            
-            --accent-green: #00ff73; /* Неоново-зеленый пульс */
-            --accent-blue: #00d2ff; /* Синий акцент */
-            --accent-purple: #8a2be2; /* Фиолетовое свечение */
-            
-            --text-main: #ffffff; /* Белый текст */
-            --text-sub: #b3bfe0; /* Светло-синеватый текст описания */
-            
-            --border-neon: 1px solid rgba(0, 210, 255, 0.3); /* Легкие границы */
+            --bg-block: rgba(26, 30, 40, 0.6);
+            --accent-green: #00ff73;
+            --accent-blue: #00d2ff;
+            --accent-purple: #8a2be2;
+            --text-main: #ffffff;
+            --text-sub: #b3bfe0;
+            --border-neon: 1px solid rgba(0, 210, 255, 0.3);
         }
 
         body {
-            /* Плавный сине-фиолетовый градиент */
             background: linear-gradient(-45deg, #0a0f24, #1a0b2e, #0d1b2a, #200f35);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -37,14 +31,12 @@
             align-items: center;
         }
 
-        /* Анимация переливания фона */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Анимированная линия пульса (fixed вверху) */
         .pulse-line-container {
             width: 100%;
             height: 4px;
@@ -76,22 +68,21 @@
             margin: 80px auto 40px auto;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
 
-        /* Шапка с логотипом кота и свечением */
         header {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             background-color: var(--bg-block);
-            backdrop-filter: blur(10px); /* Размытие фона под блоком */
+            backdrop-filter: blur(10px);
             padding: 15px 30px;
             border-radius: 40px;
             border: 1px solid rgba(0, 255, 115, 0.3);
-            box-shadow: 0 0 20px rgba(0, 255, 115, 0.15); /* Зеленое свечение шапки */
+            box-shadow: 0 0 20px rgba(0, 255, 115, 0.15);
         }
 
         header img {
@@ -109,83 +100,148 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Главный герой-блок */
         .hero {
-            background-color: var(--bg-block);
-            backdrop-filter: blur(10px);
-            padding: 50px 40px;
-            border-radius: 16px;
-            border: var(--border-neon);
-            /* Комбинированное сине-фиолетовое свечение */
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1), 0 0 40px rgba(138, 43, 226, 0.15);
             text-align: center;
+            padding: 20px 0 10px 0;
         }
 
         .hero h2 {
-            font-size: 40px;
-            margin: 0 0 20px 0;
+            font-size: 44px;
+            margin: 0 0 15px 0;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .hero p {
             font-size: 18px;
             color: var(--text-sub);
-            margin-bottom: 40px;
+            max-width: 700px;
+            margin: 0 auto;
             line-height: 1.6;
         }
 
-        .buttons {
-            display: flex;
+        /* НОВАЯ СЕТКА ПРОДУКТОВ (ХАБ) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            justify-content: center;
+            margin-bottom: 20px;
         }
 
+        .product-card {
+            background-color: var(--bg-block);
+            backdrop-filter: blur(10px);
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card.primary { border-top: 3px solid var(--accent-green); }
+        .product-card.secondary { border-top: 3px solid var(--accent-blue); }
+        .product-card.tertiary { border-top: 3px solid var(--accent-purple); }
+
+        .product-icon {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .product-card h3 {
+            font-size: 22px;
+            margin: 0 0 10px 0;
+        }
+
+        .product-card p {
+            color: var(--text-sub);
+            font-size: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin: 0 0 25px 0;
+        }
+
+        .product-card ul {
+            text-align: left;
+            padding-left: 20px;
+            color: var(--text-sub);
+            font-size: 14px;
+            margin: 0 0 25px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .product-card ul li { margin-bottom: 8px; }
+
+        /* КНОПКИ */
         .btn {
-            padding: 18px 40px;
+            width: 100%;
+            padding: 14px 20px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
             border: none;
+            box-sizing: border-box;
         }
 
-        /* Главная кнопка с сильным зеленым неоном */
         .btn-primary {
             background-color: rgba(0, 255, 115, 0.1);
             color: var(--accent-green);
             border: 1px solid var(--accent-green);
-            box-shadow: 0 0 15px rgba(0, 255, 115, 0.4), inset 0 0 10px rgba(0, 255, 115, 0.2);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 115, 0.3);
             text-shadow: 0 0 5px var(--accent-green);
         }
-
         .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 115, 0.6), inset 0 0 15px rgba(0, 255, 115, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 255, 115, 0.5);
             background-color: rgba(0, 255, 115, 0.2);
         }
 
-        /* Вторичная кнопка с синим неоном */
         .btn-secondary {
             background-color: rgba(0, 210, 255, 0.05);
             color: var(--accent-blue);
             border: 1px solid var(--accent-blue);
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
-
         .btn-secondary:hover {
             box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
-            transform: translateY(-2px);
             background-color: rgba(0, 210, 255, 0.15);
         }
 
-        /* Сетка информационных карточек */
+        .btn-tertiary {
+            background-color: rgba(138, 43, 226, 0.05);
+            color: #d8b4fe;
+            border: 1px solid rgba(138, 43, 226, 0.5);
+        }
+        .btn-tertiary:hover {
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            background-color: rgba(138, 43, 226, 0.15);
+        }
+
+        /* СЕТКА ИНФО И FAQ */
+        .section-title {
+            font-size: 28px;
+            text-align: center;
+            margin: 20px 0 10px 0;
+            color: var(--text-main);
+        }
+
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -198,14 +254,12 @@
             padding: 35px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border: 1px solid rgba(138, 43, 226, 0.4); /* При наведении карточка подсвечивается фиолетовым */
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.15);
         }
 
         .card h3 {
@@ -235,200 +289,59 @@
             font-weight: bold;
         }
 
-        .card p, .card ul {
-            color: var(--text-sub);
-            font-size: 16px;
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        .card ul {
-            padding-left: 20px;
-            list-style: none;
-        }
-
-        .card ul li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .card p, .card ul { color: var(--text-sub); font-size: 16px; line-height: 1.7; margin: 0; }
+        .card ul { padding-left: 20px; list-style: none; }
+        .card ul li { margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
         .card ul li::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            display: block;
-            box-shadow: 0 0 8px var(--accent-green);
+            content: ''; width: 6px; height: 6px; background-color: var(--accent-green);
+            border-radius: 50%; display: block; box-shadow: 0 0 8px var(--accent-green);
         }
 
-        /* Блок FAQ */
-        .faq {
-            grid-column: span 2;
-        }
-
+        /* FAQ */
+        .faq { grid-column: span 2; }
         .faq-item {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 0;
-            cursor: pointer;
-            position: relative;
-            transition: color 0.2s;
+            padding: 20px 0; cursor: pointer; position: relative; transition: color 0.2s;
         }
-
-        .faq-item:hover .faq-item-title {
-            color: var(--accent-blue);
-        }
-
+        .faq-item:hover .faq-item-title { color: var(--accent-blue); }
         .faq-item::after {
-            content: '+';
-            font-size: 24px;
-            color: var(--accent-blue);
-            position: absolute;
-            right: 0;
-            top: 20px;
-            transition: transform 0.3s ease;
+            content: '+'; font-size: 24px; color: var(--accent-blue);
+            position: absolute; right: 0; top: 20px; transition: transform 0.3s ease;
         }
-
-        .faq-item[open]::after {
-            content: '-';
-        }
-
+        .faq-item[open]::after { content: '-'; }
         .faq-item-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--text-main);
-            margin: 0;
-            display: block;
-            margin-right: 30px;
-            transition: all 0.3s ease;
+            font-size: 18px; font-weight: bold; color: var(--text-main);
+            margin: 0; display: block; margin-right: 30px; transition: all 0.3s ease;
         }
-
         .faq-item-content {
-            color: var(--text-sub);
-            font-size: 16px;
-            line-height: 1.6;
-            padding-top: 15px;
-            margin: 0;
-            display: none;
+            color: var(--text-sub); font-size: 16px; line-height: 1.6;
+            padding-top: 15px; margin: 0; display: none;
         }
+        .faq-item[open] .faq-item-content { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .faq-item[open] .faq-item-content {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Блок "Нужен полноценный VPN?" */
-        .more-block {
-            background: linear-gradient(135deg, rgba(26, 30, 40, 0.8), rgba(20, 15, 35, 0.9));
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid rgba(138, 43, 226, 0.4);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.15);
-            text-align: center;
-            grid-column: span 2;
-        }
-
-        .more-block h3 {
-            font-size: 32px;
-            margin: 0 0 15px 0;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-
-        .more-block .category {
-            font-size: 14px;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-            font-weight: bold;
-        }
-
-        .more-block p {
-            font-size: 16px;
-            color: var(--text-sub);
-            margin-bottom: 30px;
-        }
-
-        .more-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .btn-more {
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-more:hover {
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
-            border-color: rgba(138, 43, 226, 0.6);
-            transform: translateY(-2px);
-        }
-
-        /* Футер */
+        /* ФУТЕР */
         footer {
             margin-top: 20px;
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            width: 90%;
-            max-width: 1000px;
         }
 
-        footer p {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 14px;
-            margin: 0;
-        }
-
+        footer p { color: rgba(255, 255, 255, 0.3); font-size: 14px; margin: 0; }
         footer .support-pill {
-            display: inline-flex;
-            gap: 10px;
-            background-color: rgba(0, 255, 115, 0.05);
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 115, 0.3);
-            color: var(--accent-green);
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            display: inline-flex; gap: 10px; background-color: rgba(0, 255, 115, 0.05);
+            padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(0, 255, 115, 0.3);
+            color: var(--accent-green); font-size: 14px; margin-bottom: 15px;
+            text-decoration: none; transition: all 0.3s ease;
         }
-        
-        footer .support-pill:hover {
-            box-shadow: 0 0 10px rgba(0, 255, 115, 0.3);
-            background-color: rgba(0, 255, 115, 0.1);
-        }
+        footer .support-pill:hover { box-shadow: 0 0 10px rgba(0, 255, 115, 0.3); background-color: rgba(0, 255, 115, 0.1); }
 
-        /* Адаптивность для мобильных */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .products-grid { grid-template-columns: 1fr; }
             .hero h2 { font-size: 36px; }
-            .hero { padding: 30px 20px; }
-            .buttons, .more-buttons { flex-direction: column; }
-            .btn, .btn-more { width: 100%; box-sizing: border-box; justify-content: center; }
             .info-grid { grid-template-columns: 1fr; }
-            .faq, .more-block { grid-column: span 1; }
+            .faq { grid-column: span 1; }
         }
     </style>
 </head>
@@ -446,69 +359,80 @@
         </header>
 
         <section class="hero">
-            <h2>Получи доступ к нашему сервису в Telegram</h2>
-            <p>Бесплатный MTProxy — подключается в одно нажатие прямо из Telegram. Ничего ставить не надо.</p>
-            <div class="buttons">
-                <a href="tg://proxy?server=tg.voxiroxy.ru&port=8443&secret=eea1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6676f6f676c652e636f6d" class="btn btn-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 10V3L4 14H11V21L20 10H13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Подключить прокси
-                </a>
-                <button class="btn btn-secondary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4V16H20V4H8ZM8 2H20C21.1 2 22 2.9 22 4V16C22 17.1 21.1 18 20 18H8C6.9 18 6 17.1 6 16V4C6 2.9 6.9 2 8 2ZM4 18H18V20H4C2.9 20 2 19.1 2 18V6H4V18Z" fill="currentColor"/></svg>
-                    Скопировать
-                </button>
-            </div>
+            <h2>Твой свободный интернет</h2>
+            <p>Выбери удобный способ управления доступом: мощный VPN для всех устройств (VLESS / REALITY) или быстрый прокси только для Telegram.</p>
         </section>
- <section class="more-block">
-                <span class="category">Нужен доступ ко всему интернету?</span>
-                <h3>Revive VPN</h3>
-                <p>Прокси — только для Telegram. После того как вы подключились вы можете опробовать наш ВПН бесплатно и получить доступ к свободному интернету.</p>
-                <div class="more-buttons">
-                    <a href="https://t.me/myrevivebot" class="btn-more" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                        Перейти в бота
-                    </a>
-                    <a href="https://myrevive.online" class="btn-more">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                        myrevive.online
-                    </a>
+
+        <section class="products-grid">
+            
+            <div class="product-card primary">
+                <div class="product-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
                 </div>
-            </section>
+                <h3>Telegram-бот</h3>
+                <ul>
+                    <li>Рекомендуем для старта</li>
+                    <li>Покупка тарифа в 2 клика</li>
+                    <li>Авто-выдача ключей VLESS</li>
+                </ul>
+                <a href="https://t.me/myrevivebot" class="btn btn-primary" target="_blank">Открыть Бота</a>
+            </div>
+
+            <div class="product-card secondary">
+                <div class="product-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                </div>
+                <h3>Web-кабинет</h3>
+                <ul>
+                    <li>Для продвинутых юзеров</li>
+                    <li>Детальная статистика</li>
+                    <li>Управление подписками</li>
+                </ul>
+                <a href="https://myrevive.online" class="btn btn-secondary">Войти в Кабинет</a>
+            </div>
+
+            <div class="product-card tertiary">
+                <div class="product-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 10V3L4 14H11V21L20 10H13Z"/>
+                    </svg>
+                </div>
+                <h3>MTProto Proxy</h3>
+                <ul>
+                    <li>Бесплатный бонус</li>
+                    <li>Работает только в Telegram</li>
+                    <li>Без сторонних приложений</li>
+                </ul>
+                <a href="tg://proxy?server=tg.voxiroxy.ru&port=8443&secret=eea1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6676f6f676c652e636f6d" class="btn btn-tertiary">Подключить</a>
+            </div>
+
+        </section>
+
+        <h2 class="section-title">База знаний</h2>
+
         <section class="info-grid">
             
             <div class="card">
-                <span class="category">Подключение</span>
+                <span class="category">Подключение Прокси</span>
                 <h3>Три шага</h3>
                 <ul>
-                    <li>Нажмите «Подключить прокси» — откроется Telegram</li>
-                    <li>Во всплывающем окне нажмите «Подключиться»</li>
-                    <li>Готово. Проверьте статус: Настройки → Данные и память → Прокси</li>
+                    <li>Нажмите «Подключить» в карточке MTProto</li>
+                    <li>Во всплывающем окне Telegram нажмите «Подключиться»</li>
+                    <li>Готово. Статус: Настройки → Данные и память → Прокси</li>
                 </ul>
             </div>
 
             <div class="card">
                 <span class="category">О прокси</span>
                 <h3>Что такое MTProxy</h3>
-                <p>Протокол, который придумала команда Telegram для обхода блокировок. Встроен прямо в приложение — ничего устанавливать не нужно. <br><br>Через прокси идёт только Telegram — браузер и всё остальное работает как обычно, напрямую.</p>
-            </div>
-
-            <div class="card">
-                <span class="category">Когда пригодится</span>
-                <h3>Ситуации</h3>
-                <p>Провайдер режет Telegram. Корпоративная или университетская сеть блокирует мессенджеры. Летите в страну, где Telegram ограничен.</p>
-            </div>
-
-            <div class="card">
-                <span class="category">Безопасность</span>
-                <h3>Что видит прокси</h3>
-                <p>Только зашифрованный поток данных. Сообщения, медиа, звонки — всё шифруется на вашем устройстве до отправки. <br><br>Прокси не знает, что вы пишете и кому звоните.</p>
+                <p>Протокол, который придумала команда Telegram для обхода блокировок. Встроен прямо в приложение — ничего устанавливать не нужно. Через прокси идёт только Telegram — браузер и всё остальное работает напрямую.</p>
             </div>
 
             <div class="card faq">
@@ -516,33 +440,23 @@
                 <h3>Вопросы</h3>
                 
                 <details class="faq-item">
-                    <summary class="faq-item-title">Это точно бесплатно?</summary>
-                    <p class="faq-item-content">Да, MTProxy предоставляется бесплатно. Это наш способ помочь пользователям.</p>
+                    <summary class="faq-item-title">Чем отличается MTProxy от вашего VPN?</summary>
+                    <p class="faq-item-content">Наш основной VPN (через бота или веб-кабинет) использует современный протокол VLESS/REALITY, который шифрует весь трафик устройства (браузер, Instagram, YouTube). MTProxy — это легкое решение, которое маскирует трафик исключительно внутри самого приложения Telegram.</p>
                 </details>
 
                 <details class="faq-item">
-                    <summary class="faq-item-title">Чем отличается от VPN?</summary>
-                    <p class="faq-item-content">VPN шифрует весь трафик устройства, а MTProxy — только трафик самого Telegram.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-item-title">Какие платформы?</summary>
-                    <p class="faq-item-content">Работает на всех устройствах, где установлен Telegram (iOS, Android, Windows, Mac).</p>
+                    <summary class="faq-item-title">Прокси точно бесплатный?</summary>
+                    <p class="faq-item-content">Да, MTProxy предоставляется бесплатно. Это наш бонус и способ помочь пользователям всегда оставаться на связи.</p>
                 </details>
 
                 <details class="faq-item">
                     <summary class="faq-item-title">Прокси видит мои сообщения?</summary>
-                    <p class="faq-item-content">Нет, весь трафик сквозной. Прокси видит только зашифрованные пакеты.</p>
+                    <p class="faq-item-content">Нет, весь трафик сквозной. Сервер видит только зашифрованные пакеты. Сообщения и звонки шифруются на вашем устройстве.</p>
                 </details>
 
                 <details class="faq-item">
-                    <summary class="faq-item-title">Не работает, что делать?</summary>
-                    <p class="faq-item-content">Попробуйте обновить ссылку на прокси или обратиться в поддержку.</p>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-item-title">Как отключить?</summary>
-                    <p class="faq-item-content">В настройках Telegram: Настройки → Данные и память → Прокси.</p>
+                    <summary class="faq-item-title">Как отключить MTProxy?</summary>
+                    <p class="faq-item-content">В настройках Telegram: Настройки → Данные и память → Прокси (отключить тумблер).</p>
                 </details>
 
             </div>
@@ -552,7 +466,7 @@
         <footer>
             <a href="https://t.me/myrevivebot" class="support-pill">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5C21 16.1944 16.9706 20 12 20C10.9701 20 9.98188 19.8315 9.06526 19.5226L3 21L4.5 15.6C3.55523 14.436 3 13.0313 3 11.5C3 6.80558 7.02944 3 12 3C16.9706 3 21 6.80558 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                поддержка
+                Поддержка
             </a>
             <p>Revive VPN — Живой интернет для живых людей</p>
         </footer>
